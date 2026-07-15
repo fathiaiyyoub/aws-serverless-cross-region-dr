@@ -105,6 +105,44 @@ The following screenshots document the main configuration stages and the success
 | 21 | Route 53 health checks | ![](screenshots/Screenshot%20%2321%20%E2%80%93%20Route%2053%20Health%20Checks.png) |
 
 
+## Infrastructure as Code (Terraform)
+
+After successfully implementing and validating the solution manually through the AWS Management Console, the entire disaster recovery architecture was recreated using **Terraform** to demonstrate Infrastructure as Code (IaC) principles.
+
+The Terraform configuration provisions the complete multi-region serverless environment across **Sydney (Primary)** and **Singapore (Secondary)**, including:
+
+- IAM roles and policies
+- DynamoDB Global Table
+- AWS Lambda functions
+- Amazon API Gateway REST APIs
+- AWS Certificate Manager (ACM) certificates with DNS validation
+- Amazon Route 53 health checks and failover routing
+- Custom domain configuration
+
+During this phase, I gained valuable hands-on experience with:
+
+- Structuring infrastructure into modular Terraform configuration files.
+- Working with multiple AWS provider aliases for cross-region deployments.
+- Using the complete Terraform workflow:
+  - `terraform fmt`
+  - `terraform init`
+  - `terraform validate`
+  - `terraform plan`
+  - `terraform apply`
+  - `terraform output`
+  - `terraform destroy`
+- Troubleshooting real deployment issues involving provider aliases, ACM DNS validation, and DynamoDB Global Tables.
+- Managing the complete infrastructure lifecycle using Infrastructure as Code.
+
+The infrastructure was successfully deployed using Terraform, validated through end-to-end application testing (`/read` and `/write`), verified using Route 53 automatic failover, and finally removed using `terraform destroy`.
+
+| Screenshot | Description |
+|------------|-------------|
+| ![Screenshot #22](screenshots/Screenshot%20%2322%20%E2%80%93%20Terraform%20Outputs.png) | Terraform deployment outputs. |
+| ![Screenshot #23](screenshots/Screenshot%20%2323%20%E2%80%93%20Terraform%20Destroy%20(Resources).png) | Terraform removing the deployed AWS infrastructure. |
+| ![Screenshot #24](screenshots/Screenshot%20%2324%20%E2%80%93%20Terraform%20Complete.png) | Successful completion of `terraform destroy`, removing all 43 AWS resources. |
+
+
 ## Challenges and Lessons Learned
 
 During the implementation, several practical challenges were encountered and resolved:
@@ -132,3 +170,4 @@ During the implementation, several practical challenges were encountered and res
 - IAM role and permission management
 - SSL/TLS certificate management with AWS Certificate Manager
 - End-to-end solution testing and validation
+- IaC (Terraform)
