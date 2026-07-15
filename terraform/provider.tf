@@ -11,12 +11,12 @@ terraform {
 
 # Primary Region (Sydney)
 provider "aws" {
-  alias  = "sydney"
+  alias  = "primary"
   region = var.primary_region
 }
 
 # Secondary Region (Singapore)
 provider "aws" {
-  alias  = "singapore"
+  alias  = "secondary"
   region = var.secondary_region
 }
