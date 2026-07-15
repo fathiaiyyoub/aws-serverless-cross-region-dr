@@ -28,7 +28,7 @@ The solution deploys identical serverless application stacks in two AWS Regions:
 Amazon Route 53 provides DNS failover by continuously monitoring the health of the primary API endpoint. Under normal operation, client requests are routed to the primary Region. If the primary endpoint becomes unavailable, Route 53 automatically redirects traffic to the secondary Region, allowing the application to remain accessible with minimal disruption.
 
 <p align="center">
-  <img src="screenshots/architecture.png" alt="Serverless Cross-Region Disaster Recovery Architecture" width="900">
+  <img src="architecture.png" alt="Serverless Cross-Region Disaster Recovery Architecture" width="900">
 </p>
 
 ## AWS Services Used
